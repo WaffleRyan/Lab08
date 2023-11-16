@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Layout4"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/Layout4">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/b41"
+        android:layout_width="@dimen/large_length"
+        android:layout_height="@dimen/large_length"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="bro"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/b42"
+        android:layout_width="@dimen/med_length"
+        android:layout_height="@dimen/med_length"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias=".1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias=".3"
+        android:text="bro"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/b43"
+        android:layout_width="@dimen/large_length"
+        android:layout_height="@dimen/large_length"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias=".2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias=".40"
+        android:text="bro"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/b44"
+        android:layout_width="@dimen/large_length"
+        android:layout_height="@dimen/large_length"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias=".50"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias=".50"
+        android:text="bro"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/b45"
+        android:layout_width="@dimen/small_length"
+        android:layout_height="@dimen/small_length"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias=".3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias=".4"
+        android:text="bro"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
