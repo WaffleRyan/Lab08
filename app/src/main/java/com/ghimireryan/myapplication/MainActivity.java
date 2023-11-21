@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     int requestCodeOne= 1;
     String colores = "";
     int are, gee, bee;
+    UnitedStates mapo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         settingsButton = findViewById(R.id.settingsButton);
         headingText = findViewById(R.id.headingText);
         titleText =  findViewById(R.id.titleText);
+        mapo = findViewById(R.id.canvasBoard);
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
             distanceText.setText("Your guess is:\n" + val[0] + " miles away\nIn this direction:");
             arrowText.setText("----->");
             arrowText.setRotation(deg[0]);
-            UnitedStates.changeColor()
+            mapo.changeColor(guessText.getText().toString(), val[0]);
 
         }
         else{
