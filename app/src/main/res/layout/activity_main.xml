@@ -102,7 +102,7 @@
 
     <view
         android:id="@+id/canvasBoard"
-        class="com.ghimireryan.myapplication.UnitedStates"
+        class="com.ghimireryan.myapplication.UnitedState"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"

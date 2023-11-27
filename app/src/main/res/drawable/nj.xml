@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+    android:viewportWidth="1000"
+    android:viewportHeight="589"
+    android:width="1000dp"
+    android:height="589dp">
+
+    <path
+        android:name="NJ"
+        android:pathData="M916.80709 207.30914l-0.48531 -1.16476 0 1.16476 0.48531 0zm0.97064 -3.59134l0.29119 -2.91189 -0.58238 2.52364 0.29119 0.38825zm-3.97959 -29.79837l-10.19163 -2.52365 -1.74714 -0.48531 -1.65007 -0.38825 0 0 -4.07665 9.02687 1.74714 2.13539 -0.0971 6.50322 1.8442 0.29119 3.78546 9.90044 -0.19412 0.29119 -4.75609 6.98855 0.48531 5.33847 11.45345 3.88252 0.0971 4.46491 2.62071 -3.6884 0.38825 -5.33847 2.71777 -1.8442 -1.0677 -3.97959 2.03833 -4.75609 0 -10.38576 -0.67944 -3.39721 -4.56197 0.0971 1.16476 -4.65903 0.67944 -7.47386 0 0z"
+        android:fillType="evenOdd"
+        android:fillColor="#F9F9F9"
+        android:strokeColor="#000000"
+        android:strokeWidth="3.33"
+        android:strokeLineJoin="round" />
+
+</vector>
