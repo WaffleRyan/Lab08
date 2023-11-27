@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     int requestCodeOne= 1;
     String colores = "";
     int are, gee, bee;
-    UnitedStates mapo;
+    UnitedState mapo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
