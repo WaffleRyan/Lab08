@@ -69,7 +69,6 @@ public class UnitedState extends View {
     private VectorDrawableCompat wv;
     private VectorDrawableCompat wi;
     private VectorDrawableCompat wy;
-    private Canvas canv;
     private ImageView imgView;
     private int are = 148;
     private int gee = 0;
@@ -127,7 +126,7 @@ public class UnitedState extends View {
         tx = VectorDrawableCompat.create(getResources(), R.drawable.tx, null);
         ut = VectorDrawableCompat.create(getResources(), R.drawable.ut, null);
         vt = VectorDrawableCompat.create(getResources(), R.drawable.vt, null);
-        va = VectorDrawableCompat.create(getResources(), R.drawable.ca, null);
+        va = VectorDrawableCompat.create(getResources(), R.drawable.va, null);
         wa = VectorDrawableCompat.create(getResources(), R.drawable.wa, null);
         wv = VectorDrawableCompat.create(getResources(), R.drawable.wv, null);
         wi = VectorDrawableCompat.create(getResources(), R.drawable.wi, null);
@@ -243,19 +242,22 @@ public class UnitedState extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canv = canvas;
-        unitedStates.draw(canv);
-        canv.save();
-        canv.restore();
+        for(VectorDrawableCompat v : stateMap.values()) {
+            v.draw(canvas);
+        }
+        if((stateo!=null)){
+            stateo.draw(canvas);
+        }
     }
-
+VectorDrawableCompat stateo;
     public void changeColor(String state, int distance){
         int color = Color.rgb(are+deltaAre*150/distance, gee+deltaGee*150/distance, bee);
 
         if (stateMap.containsKey(state)) {
-            VectorDrawableCompat stateo = stateMap.get(state);
-            stateo.setColorFilter(color, PorterDuff.Mode.DST_OVER);
-            stateo.draw(canv);
+            stateo = stateMap.get(state);
+            stateo.setTint(color);
+            //stateo.setColorFilter(color, PorterDuff.Mode.DST_ATOP);
+            invalidate();
         }
 //        if(state.equals("AL")){al.setColorFilter(color, PorterDuff.Mode.ADD);}
 //        if(state.equals("AK")){ak.setColorFilter(color, PorterDuff.Mode.ADD);}
@@ -358,8 +360,64 @@ public class UnitedState extends View {
 //        if(state.equals("WA")){wa.draw(canv);}
 //        if(state.equals("WV")){wv.draw(canv);}
 //        if(state.equals("WI")){wi.draw(canv);}
-
-//        canv.save();
-//        canv.restore();
+        //canv.save();
+        //canv.restore();
     }
+
+    public void resetMap(){
+        
+        al.setTintList(null);
+        ak.setTintList(null);
+        az.setTintList(null);
+        ar.setTintList(null);
+        ca.setTintList(null);
+        co.setTintList(null);
+        ct.setTintList(null);
+        de.setTintList(null);
+        dc.setTintList(null);
+        fl.setTintList(null);
+        ga.setTintList(null);
+        hi.setTintList(null);
+        id.setTintList(null);
+        il.setTintList(null);
+        in.setTintList(null);
+        ia.setTintList(null);
+        ks.setTintList(null);
+        ky.setTintList(null);
+        la.setTintList(null);
+        me.setTintList(null);
+        mt.setTintList(null);
+        ne.setTintList(null);
+        nv.setTintList(null);
+        nh.setTintList(null);
+        nj.setTintList(null);
+        nm.setTintList(null);
+        ny.setTintList(null);
+        nc.setTintList(null);
+        nd.setTintList(null);
+        oh.setTintList(null);
+        ok.setTintList(null);
+        or.setTintList(null);
+        md.setTintList(null);
+        ma.setTintList(null);
+        mi.setTintList(null);
+        mn.setTintList(null);
+        ms.setTintList(null);
+        mo.setTintList(null);
+        pa.setTintList(null);
+        ri.setTintList(null);
+        sc.setTintList(null);
+        sd.setTintList(null);
+        tn.setTintList(null);
+        tx.setTintList(null);
+        ut.setTintList(null);
+        vt.setTintList(null);
+        va.setTintList(null);
+        wa.setTintList(null);
+        wv.setTintList(null);
+        wi.setTintList(null);
+        wy.setTintList(null);
+    }
+
+
 }

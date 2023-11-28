@@ -13,7 +13,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -33,16 +35,24 @@ public class MainActivity extends AppCompatActivity {
     ToggleButton musicToggleButton, SFXToggleButton, mapToggleButton, arrowToggleButton;
     int[] val = {0};
     int[] deg = {0};
+    int one = 0;
     final String[] statesList = new String[]{"AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY",};
     final String[] guessString = new String[]{statesList[((int) (random() * 50))]};
     int requestCodeOne= 1;
     String colores = "";
     int are, gee, bee;
     UnitedState mapo;
+    MediaPlayer bgAudio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bgAudio = MediaPlayer.create(this, R.raw.army_music);
+        //try{
+          //  Thread.sleep(1000);
+            bgAudio.start();
+       // }catch (Exception e){}
+
         states.put("AK",new double[]{63.588753,	-154.493062});
         states.put("AL",new double[]{32.318231,	-86.902298	});
         states.put("AR",new double[]{35.20105,	-91.831833	});
@@ -177,11 +187,16 @@ public class MainActivity extends AppCompatActivity {
     public void checkGuess(){
         distanceText.setTextColor(Color.rgb(are, gee, bee));
         arrowText.setTextColor(Color.rgb(255-are, 255-gee, 255-bee));
-
+        if(one != 0){
+            mapo.resetMap();
+            one = 0;
+        }
         if(guessText.getText().toString().equals(guessString[0])){
             distanceText.setText("You got it!\nTry guessing another state!");
             arrowText.setText("");
             guessString[0] = statesList[((int)(random()* 50))];
+            mapo.changeColor(guessText.getText().toString(), 1);
+            one = 1;
         }
         else if(states.get(guessText.getText().toString()) != null){
             val[0] =  (int) round(sqrt(pow((states.get(guessString[0])[0] - states.get(guessText.getText().toString())[0])*69, 2) +
@@ -200,5 +215,11 @@ public class MainActivity extends AppCompatActivity {
             distanceText.setText("That's not a\nstate abbreviation");
             arrowText.setText("");
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bgAudio.release();
     }
 }
