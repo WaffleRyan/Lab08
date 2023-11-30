@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -53,6 +54,13 @@ public class MainActivity extends AppCompatActivity implements WinScreen.DialogL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.menuContainer, MenuScreen.newInstance());
+        transaction.addToBackStack("menu");
+        transaction.commit();
+
         layout=findViewById(R.id.layouto);
         bgAudio = MediaPlayer.create(this, R.raw.army_music);
         //try{
@@ -251,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements WinScreen.DialogL
 //            transaction.replace(R.id.containerOfFragments, WinScreen.newInstance(guesses), "TwoTag");
 //            transaction.addToBackStack("");
 //            transaction.commit();
-            distanceText.setText("You got it!\nTry guessing another state!");
+            distanceText.setText("");
             arrowText.setText("");
             guessString[0] = statesList[((int)(random()* 50))];
             mapo.changeColor(guessText.getText().toString(), 0);

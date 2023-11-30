@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menuFrame"
+    tools:context=".MenuScreen">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+        <TextView
+            android:id="@+id/titleTextMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="53dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Statele"
+            android:textSize="200px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startButtonMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="604dp"
+            android:background="#3cb371"
+            android:fontFamily="sans-serif-black"
+            android:padding="12dp"
+            android:text="Start Game"
+            android:textFontWeight="700"
+            app:layout_constraintRight_toLeftOf="@+id/vg"
+            app:layout_constraintHorizontal_bias="0.498"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/HowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="604dp"
+            android:background="#3cb371"
+            android:fontFamily="sans-serif-black"
+            android:padding="12dp"
+            android:text="How To Play"
+            android:textFontWeight="700"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toRightOf="@+id/vg"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
