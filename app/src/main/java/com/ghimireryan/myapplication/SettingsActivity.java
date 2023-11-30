@@ -11,9 +11,9 @@ import android.widget.SeekBar;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    Button xButton, randomButton;
+    Button xButton, randomButton, USAbutton;
     SeekBar redSeekBar, blueSeekBar, greenSeekBar;
-
+    int rP, bP, gP;
     String s = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,99 @@ public class SettingsActivity extends AppCompatActivity {
         redSeekBar=findViewById(R.id.redSeekBar);
         blueSeekBar= findViewById(R.id.blueSeekBar);
         greenSeekBar= findViewById(R.id.greenSeekBar);
+        USAbutton=findViewById(R.id.USA_Button);
+        SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
+        int are  = (rgb.getInt("red", 0));
+        int gee  = (rgb.getInt("green", 0));
+        int bee  = (rgb.getInt("blue", 0));
+        int are2 = (rgb.getInt("red2", 0));
+        int gee2 = (rgb.getInt("green2", 0));
+        int bee2 = (rgb.getInt("blue2", 0));
+        int are3 = (rgb.getInt("red3", 0));
+        int gee3 = (rgb.getInt("green3", 0));
+        int bee3 = (rgb.getInt("blue3", 0));
+        if(are != 196){s="";}
+        if(gee != 15){s="";}
+        if(bee != 21){s="";}
+        if(are2!= 46){s="";}
+        if(gee2!= 89){s="";}
+        if(bee2!= 143){s="";}
+        if(are3!= 235){s="";}
+        if(gee3!= 234){s="";}
+        if(bee3!= 217){s="";}
+        USAbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
+                SharedPreferences.Editor rgbEditor = rgb.edit();
+                rgbEditor.putInt("red", 196);
+                rgbEditor.putInt("green", 15);
+                rgbEditor.putInt("blue",21);
+                rgbEditor.putInt("red2", 46);
+                rgbEditor.putInt("green2", 89);
+                rgbEditor.putInt("blue2", 143);
+                rgbEditor.putInt("red3", 235);
+                rgbEditor.putInt("green3", 234);
+                rgbEditor.putInt("blue3",217);
+                rgbEditor.putInt("r", redSeekBar.getProgress());
+                rgbEditor.putInt("g", greenSeekBar.getProgress());
+                rgbEditor.putInt("b", blueSeekBar.getProgress());
+                rgbEditor.putBoolean("isUSA", true);
+                rgbEditor.apply();
+                s = "USA";
+            }
+        });
+        blueSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                return;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                s = "";
+                return;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                return;
+            }
+        });
+        redSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                return;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                s = "";
+                return;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                return;
+            }
+        });
+        greenSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                return;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                s = "";
+                return;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                return;
+            }
+        });
         randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,13 +155,24 @@ public class SettingsActivity extends AppCompatActivity {
         xButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
-                SharedPreferences.Editor rgbEditor = rgb.edit();
-                rgbEditor.putInt("red", redSeekBar.getProgress());
-                rgbEditor.putInt("green", greenSeekBar.getProgress());
-                rgbEditor.putInt("blue", blueSeekBar.getProgress());
-                rgbEditor.apply();
-                s = (""+redSeekBar.getProgress()+" "+greenSeekBar.getProgress()+" "+blueSeekBar.getProgress());
+                if(s.equals("")) {
+                    SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
+                    SharedPreferences.Editor rgbEditor = rgb.edit();
+                    rgbEditor.putInt("red", redSeekBar.getProgress());
+                    rgbEditor.putInt("green", greenSeekBar.getProgress());
+                    rgbEditor.putInt("blue", blueSeekBar.getProgress());
+                    rgbEditor.putInt("r", redSeekBar.getProgress());
+                    rgbEditor.putInt("g", greenSeekBar.getProgress());
+                    rgbEditor.putInt("b", blueSeekBar.getProgress());
+                    rgbEditor.putInt("red2", 255 - (int) (redSeekBar.getProgress() * 2.55));
+                    rgbEditor.putInt("green2", 255 - (int) (greenSeekBar.getProgress() * 2.55));
+                    rgbEditor.putInt("blue2", 255 - (int) (blueSeekBar.getProgress() * 2.55));
+                    rgbEditor.putInt("red3", (int) (redSeekBar.getProgress() * 2.55));
+                    rgbEditor.putInt("green3", (int) (greenSeekBar.getProgress() * 2.55));
+                    rgbEditor.putInt("blue3", (int) (blueSeekBar.getProgress() * 2.55));
+                    rgbEditor.putBoolean("isUSA", false);
+                    rgbEditor.apply();
+                }
 
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("com.ghimireryan.myapplication.extra.REPLY", s);//insert message
@@ -81,13 +185,27 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
-        SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
-        SharedPreferences.Editor rgbEditor = rgb.edit();
-        rgbEditor.putInt("red", redSeekBar.getProgress());
-        rgbEditor.putInt("green", greenSeekBar.getProgress());
-        rgbEditor.putInt("blue", blueSeekBar.getProgress());
-        rgbEditor.apply();
+        rP = redSeekBar.getProgress();
+        gP = greenSeekBar.getProgress();
+        bP = blueSeekBar.getProgress();
+        if(s.equals("")) {
+            SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
+            SharedPreferences.Editor rgbEditor = rgb.edit();
+            rgbEditor.putInt("red", redSeekBar.getProgress());
+            rgbEditor.putInt("green", greenSeekBar.getProgress());
+            rgbEditor.putInt("blue", blueSeekBar.getProgress());
+            rgbEditor.putInt("r", redSeekBar.getProgress());
+            rgbEditor.putInt("g", greenSeekBar.getProgress());
+            rgbEditor.putInt("b", blueSeekBar.getProgress());
+            rgbEditor.putInt("red2", 255 - (int) (redSeekBar.getProgress() * 2.55));
+            rgbEditor.putInt("green2", 255 - (int) (greenSeekBar.getProgress() * 2.55));
+            rgbEditor.putInt("blue2", 255 - (int) (blueSeekBar.getProgress() * 2.55));
+            rgbEditor.putInt("red3", (int) (redSeekBar.getProgress() * 2.55));
+            rgbEditor.putInt("green3", (int) (greenSeekBar.getProgress() * 2.55));
+            rgbEditor.putInt("blue3", (int) (blueSeekBar.getProgress() * 2.55));
+            rgbEditor.putBoolean("isUSA", true);
+            rgbEditor.apply();
+        }
     }
 
     @Override
@@ -95,8 +213,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onResume();
 
         SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
-        redSeekBar.setProgress(rgb.getInt("red", 0));
-        greenSeekBar.setProgress(rgb.getInt("green", 0));
-        blueSeekBar.setProgress(rgb.getInt("blue", 0));
+        redSeekBar.setProgress(rgb.getInt("r", 0));
+        greenSeekBar.setProgress(rgb.getInt("g", 0));
+        blueSeekBar.setProgress(rgb.getInt("b", 0));
     }
 }

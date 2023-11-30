@@ -1,5 +1,8 @@
 package com.ghimireryan.myapplication;
 
+import static android.graphics.Color.blue;
+import static android.graphics.Color.rgb;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -75,9 +78,51 @@ public class UnitedState extends View {
     private int bee = 0;
     private int deltaGee = 221;
     private int deltaAre = -72;
+    private int[] colores;
     private Map<String, VectorDrawableCompat> stateMap;
     public UnitedState(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
+        colores = new int[]{rgb(9, 255, 38),
+                rgb(57, 251, 9),
+                rgb(79, 246, 0),
+                rgb(95, 242, 0),
+                rgb(108, 237, 0),
+                rgb(119, 233, 0),
+                rgb(129, 228, 0),
+                rgb(138, 223, 0),
+                rgb(146, 219, 0),
+                rgb(154, 214, 0),
+                rgb(160, 209, 0),
+                rgb(167, 204, 0),
+                rgb(173, 199, 0),
+                rgb(178, 194, 0),
+                rgb(184, 189, 0),
+                rgb(188, 184, 0),
+                rgb(193, 179, 0),
+                rgb(197, 174, 0),
+                rgb(201, 169, 0),
+                rgb(205, 163, 0),
+                rgb(209, 158, 0),
+                rgb(212, 152, 0),
+                rgb(215, 147, 0),
+                rgb(218, 141, 0),
+                rgb(220, 135, 0),
+                rgb(223, 129, 0),
+                rgb(225, 123, 0),
+                rgb(227, 117, 0),
+                rgb(228, 111, 0),
+                rgb(230, 105, 0),
+                rgb(231, 98, 0),
+                rgb(232, 92, 0),
+                rgb(232, 85, 0),
+                rgb(233, 77, 0),
+                rgb(233, 70, 0),
+                rgb(233, 62, 0),
+                rgb(232, 53, 0),
+                rgb(232, 44, 0),
+                rgb(231, 32, 6),
+                rgb(230, 16, 16)};
 
         unitedStates = VectorDrawableCompat.create(getResources(), R.drawable.us, null);
         al = VectorDrawableCompat.create(getResources(), R.drawable.al, null);
@@ -185,6 +230,58 @@ public class UnitedState extends View {
         wy.setBounds(50, 130, 950, 600);
         unitedStates.setBounds(50, 130, 950, 600);
 
+        al.setTint(Color.rgb(247, 247, 233));
+        ak.setTint(Color.rgb(247, 247, 233));
+        az.setTint(Color.rgb(247, 247, 233));
+        ar.setTint(Color.rgb(247, 247, 233));
+        ca.setTint(Color.rgb(247, 247, 233));
+        co.setTint(Color.rgb(247, 247, 233));
+        ct.setTint(Color.rgb(247, 247, 233));
+        de.setTint(Color.rgb(247, 247, 233));
+        dc.setTint(Color.rgb(247, 247, 233));
+        fl.setTint(Color.rgb(247, 247, 233));
+        ga.setTint(Color.rgb(247, 247, 233));
+        hi.setTint(Color.rgb(247, 247, 233));
+        id.setTint(Color.rgb(247, 247, 233));
+        il.setTint(Color.rgb(247, 247, 233));
+        in.setTint(Color.rgb(247, 247, 233));
+        ia.setTint(Color.rgb(247, 247, 233));
+        ks.setTint(Color.rgb(247, 247, 233));
+        ky.setTint(Color.rgb(247, 247, 233));
+        la.setTint(Color.rgb(247, 247, 233));
+        me.setTint(Color.rgb(247, 247, 233));
+        mt.setTint(Color.rgb(247, 247, 233));
+        ne.setTint(Color.rgb(247, 247, 233));
+        nv.setTint(Color.rgb(247, 247, 233));
+        nh.setTint(Color.rgb(247, 247, 233));
+        nj.setTint(Color.rgb(247, 247, 233));
+        nm.setTint(Color.rgb(247, 247, 233));
+        ny.setTint(Color.rgb(247, 247, 233));
+        nc.setTint(Color.rgb(247, 247, 233));
+        nd.setTint(Color.rgb(247, 247, 233));
+        oh.setTint(Color.rgb(247, 247, 233));
+        ok.setTint(Color.rgb(247, 247, 233));
+        or.setTint(Color.rgb(247, 247, 233));
+        md.setTint(Color.rgb(247, 247, 233));
+        ma.setTint(Color.rgb(247, 247, 233));
+        mi.setTint(Color.rgb(247, 247, 233));
+        mn.setTint(Color.rgb(247, 247, 233));
+        ms.setTint(Color.rgb(247, 247, 233));
+        mo.setTint(Color.rgb(247, 247, 233));
+        pa.setTint(Color.rgb(247, 247, 233));
+        ri.setTint(Color.rgb(247, 247, 233));
+        sc.setTint(Color.rgb(247, 247, 233));
+        sd.setTint(Color.rgb(247, 247, 233));
+        tn.setTint(Color.rgb(247, 247, 233));
+        tx.setTint(Color.rgb(247, 247, 233));
+        ut.setTint(Color.rgb(247, 247, 233));
+        vt.setTint(Color.rgb(247, 247, 233));
+        va.setTint(Color.rgb(247, 247, 233));
+        wa.setTint(Color.rgb(247, 247, 233));
+        wv.setTint(Color.rgb(247, 247, 233));
+        wi.setTint(Color.rgb(247, 247, 233));
+        wy.setTint(Color.rgb(247, 247, 233));
+
         stateMap = new HashMap<>();
         stateMap.put("AL", al);
         stateMap.put("AK", ak);
@@ -236,6 +333,7 @@ public class UnitedState extends View {
         stateMap.put("WA", wa);
         stateMap.put("WV", wv);
         stateMap.put("WI", wi);
+        stateMap.put("WY", wy);
 
     }
 
@@ -245,123 +343,29 @@ public class UnitedState extends View {
         for(VectorDrawableCompat v : stateMap.values()) {
             v.draw(canvas);
         }
+
         if((stateo!=null)){
             stateo.draw(canvas);
         }
+
+        unitedStates.draw(canvas);
     }
 VectorDrawableCompat stateo;
     public void changeColor(String state, int distance){
-        int color = Color.rgb(are+deltaAre*150/distance, gee+deltaGee*150/distance, bee);
-
+        int disto = (int) (distance * 0.008125 *2.5);
+        if(disto>39){
+            disto = 39;
+        }
         if (stateMap.containsKey(state)) {
             stateo = stateMap.get(state);
-            stateo.setTint(color);
-            //stateo.setColorFilter(color, PorterDuff.Mode.DST_ATOP);
+            if(distance==0){
+                stateo.setTint(Color.rgb(9, 94, 222));
+            }
+            else {
+                stateo.setTint(colores[(int) (disto)]);
+            }
             invalidate();
         }
-//        if(state.equals("AL")){al.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("AK")){ak.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("AZ")){az.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("AR")){ar.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("CA")){ca.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("CO")){co.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("CT")){ct.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("DE")){de.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("DC")){dc.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("FL")){fl.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("GA")){ga.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("HI")){hi.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("ID")){id.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("IL")){il.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("IN")){in.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("IA")){ia.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("KS")){ks.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("KY")){ky.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("LA")){la.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("ME")){me.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("MT")){mt.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("NE")){ne.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("NV")){nv.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("NH")){nh.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("NJ")){nj.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("NM")){nm.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("NY")){ny.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("NC")){nc.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("ND")){nd.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("OH")){oh.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("OK")){ok.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("OR")){or.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("MD")){md.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("MA")){ma.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("MI")){mi.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("MN")){mn.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("MS")){ms.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("MO")){mo.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("PA")){pa.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("RI")){ri.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("SC")){sc.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("SD")){sd.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("TN")){tn.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("TX")){tx.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("UT")){ut.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("VT")){vt.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("VA")){va.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("WA")){wa.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("WV")){wv.setColorFilter(color, PorterDuff.Mode.ADD);}
-//        if(state.equals("WI")){wi.setColorFilter(color, PorterDuff.Mode.ADD);}
-//
-//        if(state.equals("AL")){al.draw(canv);}
-//        if(state.equals("AK")){ak.draw(canv);}
-//        if(state.equals("AZ")){az.draw(canv);}
-//        if(state.equals("AR")){ar.draw(canv);}
-//        if(state.equals("CA")){ca.draw(canv);}
-//        if(state.equals("CO")){co.draw(canv);}
-//        if(state.equals("CT")){ct.draw(canv);}
-//        if(state.equals("DE")){de.draw(canv);}
-//        if(state.equals("DC")){dc.draw(canv);}
-//        if(state.equals("FL")){fl.draw(canv);}
-//        if(state.equals("GA")){ga.draw(canv);}
-//        if(state.equals("HI")){hi.draw(canv);}
-//        if(state.equals("ID")){id.draw(canv);}
-//        if(state.equals("IL")){il.draw(canv);}
-//        if(state.equals("IN")){in.draw(canv);}
-//        if(state.equals("IA")){ia.draw(canv);}
-//        if(state.equals("KS")){ks.draw(canv);}
-//        if(state.equals("KY")){ky.draw(canv);}
-//        if(state.equals("LA")){la.draw(canv);}
-//        if(state.equals("ME")){me.draw(canv);}
-//        if(state.equals("MT")){mt.draw(canv);}
-//        if(state.equals("NE")){ne.draw(canv);}
-//        if(state.equals("NV")){nv.draw(canv);}
-//        if(state.equals("NH")){nh.draw(canv);}
-//        if(state.equals("NJ")){nj.draw(canv);}
-//        if(state.equals("NM")){nm.draw(canv);}
-//        if(state.equals("NY")){ny.draw(canv);}
-//        if(state.equals("NC")){nc.draw(canv);}
-//        if(state.equals("ND")){nd.draw(canv);}
-//        if(state.equals("OH")){oh.draw(canv);}
-//        if(state.equals("OK")){ok.draw(canv);}
-//        if(state.equals("OR")){or.draw(canv);}
-//        if(state.equals("MD")){md.draw(canv);}
-//        if(state.equals("MA")){ma.draw(canv);}
-//        if(state.equals("MI")){mi.draw(canv);}
-//        if(state.equals("MN")){mn.draw(canv);}
-//        if(state.equals("MS")){ms.draw(canv);}
-//        if(state.equals("MO")){mo.draw(canv);}
-//        if(state.equals("PA")){pa.draw(canv);}
-//        if(state.equals("RI")){ri.draw(canv);}
-//        if(state.equals("SC")){sc.draw(canv);}
-//        if(state.equals("SD")){sd.draw(canv);}
-//        if(state.equals("TN")){tn.draw(canv);}
-//        if(state.equals("TX")){tx.draw(canv);}
-//        if(state.equals("UT")){ut.draw(canv);}
-//        if(state.equals("VT")){vt.draw(canv);}
-//        if(state.equals("VA")){va.draw(canv);}
-//        if(state.equals("WA")){wa.draw(canv);}
-//        if(state.equals("WV")){wv.draw(canv);}
-//        if(state.equals("WI")){wi.draw(canv);}
-        //canv.save();
-        //canv.restore();
     }
 
     public void resetMap(){
@@ -417,6 +421,8 @@ VectorDrawableCompat stateo;
         wv.setTintList(null);
         wi.setTintList(null);
         wy.setTintList(null);
+
+        invalidate();
     }
 
 

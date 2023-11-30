@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    tools:context=".SettingsActivity"
+    android:background="#ebead9">
 
 
     <androidx.appcompat.widget.AppCompatSeekBar
@@ -62,6 +63,8 @@
         app:layout_constraintTop_toBottomOf="@id/greenSeekBar" />
 
     <ToggleButton
+        android:backgroundTint="#C40f15"
+        android:textColor="#ebead9"
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,6 +79,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
+        android:backgroundTint="#2e598f"
+        android:textColor="#ebead9"
         android:id="@+id/toggleButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,6 +93,8 @@
         app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
 
     <ToggleButton
+        android:backgroundTint="#C40f15"
+        android:textColor="#ebead9"
         android:id="@+id/toggleButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,6 +109,8 @@
         app:layout_constraintTop_toBottomOf="@+id/toggleButton2" />
 
     <ToggleButton
+        android:backgroundTint="#2e598f"
+        android:textColor="#ebead9"
         android:id="@+id/toggleButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,6 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toggleButton3" />
 
     <TextView
+        android:textColor="#2e598f"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -128,6 +138,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:textColor="#C40f15"
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -142,6 +153,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:textColor="#2e598f"
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -156,6 +168,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:textColor="#C40f15"
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -194,5 +207,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/USA_Button"
+        android:text="USA"
+        android:backgroundTint="#C40f15"
+        android:textColor="#ebead9"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blueSeekBar"
+        android:layout_marginTop="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

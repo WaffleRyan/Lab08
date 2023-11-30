@@ -9,28 +9,31 @@ import static java.lang.Math.sqrt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentManager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements WinScreen.DialogListener {
 
     public Map<String, double[]> states = new TreeMap<>();
     AppCompatButton guessButton,settingsButton, xButton;
     EditText guessText;
+    FragmentManager fragmentManager;
+    private View layout;
     TextView distanceText,arrowText, headingText, titleText, textView6, textView5, textView4, textView3;
     ToggleButton musicToggleButton, SFXToggleButton, mapToggleButton, arrowToggleButton;
     int[] val = {0};
@@ -40,19 +43,23 @@ public class MainActivity extends AppCompatActivity {
     final String[] guessString = new String[]{statesList[((int) (random() * 50))]};
     int requestCodeOne= 1;
     String colores = "";
-    int are, gee, bee;
+    int are, gee, bee, are2, gee2, bee2, are3, gee3, bee3;
     UnitedState mapo;
     MediaPlayer bgAudio;
+    int guesses = 1;
+    boolean isUSA;
+    //WinScreen winner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        layout=findViewById(R.id.layouto);
         bgAudio = MediaPlayer.create(this, R.raw.army_music);
         //try{
           //  Thread.sleep(1000);
             bgAudio.start();
        // }catch (Exception e){}
-
+        fragmentManager = getSupportFragmentManager();
         states.put("AK",new double[]{63.588753,	-154.493062});
         states.put("AL",new double[]{32.318231,	-86.902298	});
         states.put("AR",new double[]{35.20105,	-91.831833	});
@@ -123,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, requestCodeOne);
             }
         });
-
         guessText.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event)
             {
@@ -144,23 +150,40 @@ public class MainActivity extends AppCompatActivity {
         guessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(guessText.getWindowToken(), 0);
                 checkGuess();
             }
         });
 
         SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
-        are = (int)(2.55*(rgb.getInt("red", 0)));
-        gee = (int)(2.55*(rgb.getInt("green", 0)));
-        bee= (int)(2.55*(rgb.getInt("blue", 0)));
+        are = (rgb.getInt("red", 0));
+        gee = (rgb.getInt("green", 0));
+        bee= (rgb.getInt("blue", 0));
+        are2 = (rgb.getInt("red2", 0));
+        gee2 = (rgb.getInt("green2", 0));
+        bee2= (rgb.getInt("blue2", 0));
+        are3 = (rgb.getInt("red3", 0));
+        gee3 = (rgb.getInt("green3", 0));
+        bee3= (rgb.getInt("blue3", 0));
+        isUSA = rgb.getBoolean("isUSA", true);
         titleText.setTextColor(Color.rgb(are, gee, bee));
         guessText.setTextColor(Color.rgb(are, gee, bee));
         distanceText.setTextColor(Color.rgb(are, gee, bee));
-        arrowText.setTextColor(Color.rgb(255-are, 255-gee, 255-bee));
-        headingText.setTextColor(Color.rgb(255-are, 255-gee, 255-bee));
-        guessButton.setTextColor(Color.rgb(are, gee, bee));
-        guessButton.setBackgroundColor(Color.rgb(255-are, 255-gee, 255-bee));
-        settingsButton.setBackgroundColor(Color.rgb(255-are, 255-gee, 255-bee));
-        settingsButton.setTextColor(Color.rgb(are, gee, bee));
+        arrowText.setTextColor(Color.rgb(are2, gee2, bee2));
+        headingText.setTextColor(Color.rgb(are2, gee2, bee2));
+        guessButton.setBackgroundColor(Color.rgb(are2, gee2, bee2));
+        settingsButton.setBackgroundColor(Color.rgb(are2, gee2, bee2));
+        if(!isUSA) {
+            layout.setBackgroundColor(Color.argb(50, are3, gee3, bee3));
+            guessButton.setTextColor(Color.rgb(are, gee, bee));
+            settingsButton.setTextColor(Color.rgb(are, gee, bee));
+        }
+        else{
+            layout.setBackgroundColor(Color.rgb(are3, gee3, bee3));
+            guessButton.setTextColor(Color.rgb(are3, gee3, bee3));
+            settingsButton.setTextColor(Color.rgb(are3, gee3, bee3));
+        }
 
 
     }
@@ -169,34 +192,71 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("testing : on return");
         if(requestCode==1 & resultCode==RESULT_OK){
             colores = data.getStringExtra("com.ghimireryan.myapplication.extra.REPLY");
-            are = (int)(2.55*Integer.parseInt(colores.split(" ")[0]));
-            gee = (int)(2.55*Integer.parseInt(colores.split(" ")[1]));
-            bee = (int)(2.55*Integer.parseInt(colores.split(" ")[2]));
+//            are = (int)(2.55*Integer.parseInt(colores.split(" ")[0]));
+//            gee = (int)(2.55*Integer.parseInt(colores.split(" ")[1]));
+//            bee = (int)(2.55*Integer.parseInt(colores.split(" ")[2]));
+
+            SharedPreferences rgb = getSharedPreferences("RGB", MODE_PRIVATE);
+            are = (rgb.getInt("red", 0));
+            gee = (rgb.getInt("green", 0));
+            bee= (rgb.getInt("blue", 0));
+            are2 = (rgb.getInt("red2", 0));
+            gee2 = (rgb.getInt("green2", 0));
+            bee2= (rgb.getInt("blue2", 0));
+            are3 = (rgb.getInt("red3", 0));
+            gee3 = (rgb.getInt("green3", 0));
+            bee3= (rgb.getInt("blue3", 0));
             titleText.setTextColor(Color.rgb(are, gee, bee));
             guessText.setTextColor(Color.rgb(are, gee, bee));
             distanceText.setTextColor(Color.rgb(are, gee, bee));
-            arrowText.setTextColor(Color.rgb(255-are, 255-gee, 255-bee));
-            headingText.setTextColor(Color.rgb(255-are, 255-gee, 255-bee));
-            guessButton.setTextColor(Color.rgb(are, gee, bee));
-            guessButton.setBackgroundColor(Color.rgb(255-are, 255-gee, 255-bee));
-            settingsButton.setBackgroundColor(Color.rgb(255-are, 255-gee, 255-bee));
-            settingsButton.setTextColor(Color.rgb(are, gee, bee));
+            arrowText.setTextColor(Color.rgb(are2, gee2, bee2));
+            headingText.setTextColor(Color.rgb(are2, gee2, bee2));
+            guessButton.setBackgroundColor(Color.rgb(are2, gee2, bee2));
+            settingsButton.setBackgroundColor(Color.rgb(are2, gee2, bee2));
+            isUSA = rgb.getBoolean("isUSA", true);
+            if(!isUSA) {
+                layout.setBackgroundColor(Color.argb(50, are3, gee3, bee3));
+                guessButton.setTextColor(Color.rgb(are, gee, bee));
+                settingsButton.setTextColor(Color.rgb(are, gee, bee));
+            }
+            else{
+                layout.setBackgroundColor(Color.rgb(are3, gee3, bee3));
+                guessButton.setTextColor(Color.rgb(are3, gee3, bee3));
+                settingsButton.setTextColor(Color.rgb(are3, gee3, bee3));
+            }
 
         }
     }
     public void checkGuess(){
+        // Get the input manager
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        // Hide the keyboard
+        try {
+            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }catch (Exception e){
+            return;
+        }
+
         distanceText.setTextColor(Color.rgb(are, gee, bee));
-        arrowText.setTextColor(Color.rgb(255-are, 255-gee, 255-bee));
+        arrowText.setTextColor(Color.rgb(are2, gee2, bee2));
         if(one != 0){
             mapo.resetMap();
             one = 0;
         }
         if(guessText.getText().toString().equals(guessString[0])){
+            WinScreen dialogFragment = WinScreen.newInstance(guesses);
+            dialogFragment.setDialogListener(this);
+            dialogFragment.show(getSupportFragmentManager(),"WinFrag");
+//            FragmentTransaction transaction = fragmentManager.beginTransaction();
+//            transaction.replace(R.id.containerOfFragments, WinScreen.newInstance(guesses), "TwoTag");
+//            transaction.addToBackStack("");
+//            transaction.commit();
             distanceText.setText("You got it!\nTry guessing another state!");
             arrowText.setText("");
             guessString[0] = statesList[((int)(random()* 50))];
-            mapo.changeColor(guessText.getText().toString(), 1);
+            mapo.changeColor(guessText.getText().toString(), 0);
             one = 1;
+            guesses = 1;
         }
         else if(states.get(guessText.getText().toString()) != null){
             val[0] =  (int) round(sqrt(pow((states.get(guessString[0])[0] - states.get(guessText.getText().toString())[0])*69, 2) +
@@ -209,17 +269,23 @@ public class MainActivity extends AppCompatActivity {
             arrowText.setText("----->");
             arrowText.setRotation(deg[0]);
             mapo.changeColor(guessText.getText().toString(), val[0]);
+            guesses+=1;
 
         }
         else{
             distanceText.setText("That's not a\nstate abbreviation");
             arrowText.setText("");
         }
+        guessText.setText("");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         bgAudio.release();
+    }
+
+    public void onDialogDismissed() {
+        mapo.resetMap();
     }
 }
